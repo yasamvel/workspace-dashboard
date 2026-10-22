@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6fa">
+  <title>Workspace — рабочая панель</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" aria-label="Workspace home"><span class="brand-mark"><span></span><span></span><span></span><span></span></span><span>workspace<span class="brand-dot">.</span></span></a>
+    <div class="workspace-switch"><div class="workspace-avatar">W</div><div class="workspace-name"><strong>Рабочее пространство</strong><small>Личная панель</small></div><span class="chevron">⌄</span></div>
+    <div class="nav-label">РАБОЧЕЕ</div>
+    <nav class="main-nav">
+      <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span>Обзор <span class="nav-count">4</span></button>
+      <button class="nav-item" data-view="mail"><span class="nav-icon">✉</span>Почта <span class="nav-count unread">8</span></button>
+      <button class="nav-item" data-view="tasks"><span class="nav-icon">☷</span>Задачи <span class="nav-count">12</span></button>
+      <button class="nav-item" data-view="calendar"><span class="nav-icon">▦</span>Календарь</button>
+      <button class="nav-item" data-view="files"><span class="nav-icon">▱</span>Файлы</button>
+      <button class="nav-item" data-view="contacts"><span class="nav-icon">♙</span>Контакты</button>
+    </nav>
+    <div class="nav-label nav-label-spaced">ПРОСТРАНСТВО</div>
+    <nav class="main-nav">
+      <button class="nav-item" data-view="approvals"><span class="nav-icon">◇</span>На согласовании <span class="nav-count">3</span></button>
+      <button class="nav-item" data-view="team"><span class="nav-icon">♧</span>Команда</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="cloud-card"><div class="cloud-top"><span class="cloud-symbol">☁</span><span class="connected-dot"></span></div><strong>Nextcloud</strong><p>Облачное хранилище</p><div class="storage-line"><span></span></div><small>64,2 ГБ из 100 ГБ</small><button class="text-link" data-toast="Подключение Nextcloud будет настроено на следующем этапе">Настроить подключение ↗</button></div>
+      <button class="nav-item" data-view="settings"><span class="nav-icon">⚙</span>Настройки</button>
+      <div class="profile"><div class="avatar avatar-purple">С</div><div class="profile-info"><strong>Самвел</strong><small>Администратор</small></div><button class="more-btn" aria-label="Профиль">•••</button></div>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Открыть меню">☰</button>
+      <div class="breadcrumbs"><span>Рабочее пространство</span><span class="crumb-sep">/</span><strong id="crumbCurrent">Обзор</strong></div>
+      <div class="top-actions">
+        <label class="global-search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Поиск по всему рабочему пространству"><kbd>⌘ K</kbd></label>
+        <button class="icon-button notification-button" aria-label="Уведомления" data-toast="Уведомления появятся после подключения сервисов">♧<i></i></button>
+        <button class="help-button" data-toast="Справочный центр будет добавлен позже">?</button>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <section class="welcome-row">
+        <div><div class="eyebrow"><span class="live-dot"></span>ЧЕТВЕРГ, 22 ОКТЯБРЯ 2026</div><h1 id="pageTitle">Добрый день, Самвел <span class="wave">✳</span></h1><p class="page-subtitle" id="pageSubtitle">Вот что происходит в твоём рабочем пространстве сегодня.</p></div>
+        <button class="primary-button" id="quickCreate"><span>＋</span> Создать <span class="button-caret">⌄</span></button>
+      </section>
+
+      <section class="stats-grid" aria-label="Сводка">
+        <article class="stat-card"><div class="stat-head"><span class="stat-icon purple-bg">☷</span><span class="stat-label">Мои задачи</span><span class="trend neutral">На этой неделе</span></div><div class="stat-number">12 <span class="stat-unit">задач</span></div><div class="stat-foot"><div class="mini-progress"><span style="width:68%"></span></div><span>8 из 12 в работе</span></div></article>
+        <article class="stat-card"><div class="stat-head"><span class="stat-icon blue-bg">✉</span><span class="stat-label">Непрочитанные</span><span class="trend positive">+3 сегодня</span></div><div class="stat-number">8 <span class="stat-unit">писем</span></div><div class="stat-foot"><span class="status-dot blue"></span><span>5 требуют ответа</span></div></article>
+        <article class="stat-card"><div class="stat-head"><span class="stat-icon amber-bg">◇</span><span class="stat-label">На согласовании</span><span class="trend neutral">Ожидают решения</span></div><div class="stat-number">3 <span class="stat-unit">документа</span></div><div class="stat-foot"><span class="status-dot amber"></span><span>1 срочный документ</span></div></article>
+        <article class="stat-card"><div class="stat-head"><span class="stat-icon green-bg">▦</span><span class="stat-label">Встречи сегодня</span><span class="trend neutral">До 17:00</span></div><div class="stat-number">2 <span class="stat-unit">встречи</span></div><div class="stat-foot"><span class="status-dot green"></span><span>Следующая в 14:30</span></div></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel tasks-panel">
+          <div class="panel-heading"><div><h2>Мои задачи</h2><p>Приоритетные задачи и ближайшие сроки</p></div><button class="subtle-button" data-view="tasks">Все задачи <span>↗</span></button></div>
+          <div class="task-filters"><button class="filter-chip selected" data-filter="all">Все <span>4</span></button><button class="filter-chip" data-filter="urgent">Срочные <span>2</span></button><button class="filter-chip" data-filter="today">На сегодня <span>2</span></button></div>
+          <div class="task-list" id="taskList">
+            <div class="task-row" data-priority="urgent" data-due="today"><button class="task-check" aria-label="Отметить выполненной"></button><div class="task-copy"><strong>Согласовать финальную версию договора ЛСТК</strong><div class="task-meta"><span class="project-tag violet">Офис продаж</span><span>•</span><span class="due urgent-text">Сегодня, 16:00</span></div></div><div class="avatar-stack"><span class="avatar avatar-blue">Т</span><span class="avatar avatar-peach">Л</span></div><span class="priority-flag high">Высокий</span></div>
+            <div class="task-row" data-priority="urgent" data-due="today"><button class="task-check" aria-label="Отметить выполненной"></button><div class="task-copy"><strong>Проверить сертификаты на сталь</strong><div class="task-meta"><span class="project-tag blue-tag">Документация</span><span>•</span><span class="due urgent-text">Сегодня, 17:30</span></div></div><div class="avatar-stack"><span class="avatar avatar-purple">С</span></div><span class="priority-flag high">Высокий</span></div>
+            <div class="task-row" data-priority="normal" data-due="week"><button class="task-check" aria-label="Отметить выполненной"></button><div class="task-copy"><strong>Согласовать альбом АС с новыми разделами</strong><div class="task-meta"><span class="project-tag green-tag">Проектирование</span><span>•</span><span class="due">Завтра</span></div></div><div class="avatar-stack"><span class="avatar avatar-peach">М</span><span class="avatar avatar-blue">Т</span></div><span class="priority-flag medium">Средний</span></div>
+            <div class="task-row" data-priority="normal" data-due="week"><button class="task-check" aria-label="Отметить выполненной"></button><div class="task-copy"><strong>Подготовить график платежей по договору</strong><div class="task-meta"><span class="project-tag amber-tag">Финансы</span><span>•</span><span class="due">Пятница</span></div></div><div class="avatar-stack"><span class="avatar avatar-purple">С</span></div><span class="priority-flag medium">Средний</span></div>
+          </div>
+          <div class="panel-footer"><span class="footer-muted">Обновлено только в демонстрационных данных</span><button class="text-link" data-view="tasks">Открыть список задач →</button></div>
+        </article>
+
+        <article class="panel calendar-panel">
+          <div class="panel-heading"><div><h2>Сегодня в календаре</h2><p>22 октября · Четверг</p></div><button class="icon-button small-icon" data-view="calendar" aria-label="Открыть календарь">↗</button></div>
+          <div class="agenda">
+            <div class="agenda-item"><div class="agenda-time">14:30<small>15:00</small></div><div class="agenda-marker marker-purple"></div><div class="agenda-copy"><strong>Совещание по офису продаж</strong><p>Проектная команда · Переговорная 2</p><div class="agenda-people"><span class="avatar avatar-purple">С</span><span class="avatar avatar-blue">Т</span><span class="avatar avatar-peach">Л</span><span class="people-more">+2</span></div></div></div>
+            <div class="agenda-item"><div class="agenda-time">16:00<small>16:30</small></div><div class="agenda-marker marker-blue"></div><div class="agenda-copy"><strong>Звонок с поставщиком</strong><p>Договор и спецификация металла</p><div class="agenda-note"><span>◉</span> Онлайн-встреча</div></div></div>
+          </div>
+          <button class="calendar-link" data-view="calendar">Открыть календарь <span>→</span></button>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="panel inbox-panel">
+          <div class="panel-heading"><div><h2>Последние письма</h2><p>Важное из твоего почтового ящика</p></div><button class="subtle-button" data-view="mail">Вся почта <span>↗</span></button></div>
+          <div class="mail-list">
+            <button class="mail-row" data-toast="Почта пока работает в режиме макета — подключим её через API"><span class="mail-avatar mail-a">М</span><span class="mail-main"><strong>Марина · Бухгалтерия КП</strong><span>Запрос актуальной справки по контрагенту</span></span><span class="mail-time">12:48<i class="unread-dot"></i></span></button>
+            <button class="mail-row" data-toast="Почта пока работает в режиме макета — подключим её через API"><span class="mail-avatar mail-b">Т</span><span class="mail-main"><strong>Тимур · Подрядчик</strong><span>Материал профиля и обновлённый договор</span></span><span class="mail-time">11:26<i class="unread-dot"></i></span></button>
+            <button class="mail-row" data-toast="Почта пока работает в режиме макета — подключим её через API"><span class="mail-avatar mail-c">П</span><span class="mail-main"><strong>Проектная группа</strong><span>Альбом АС — согласование новых разделов</span></span><span class="mail-time">Вчера</span></button>
+          </div>
+        </article>
+        <article class="panel ai-panel">
+          <div class="ai-header"><div class="ai-spark">✳</div><div><h2>ИИ-помощник</h2><p>Помощь в работе с контекстом</p></div><span class="ai-badge">PREVIEW</span></div>
+          <div class="ai-intro"><strong>Чем помочь?</strong><p>Я смогу анализировать документы, находить информацию в письмах и помогать с задачами — после подключения источников.</p></div>
+          <div class="ai-suggestions"><button data-prompt="Сделай краткую сводку по моим срочным задачам">↗ <span>Сводка по срочным задачам</span></button><button data-prompt="Найди противоречия между договором и спецификацией">⌕ <span>Сравнить договор и спецификацию</span></button><button data-prompt="Подготовь ответ на последнее письмо подрядчика">✎ <span>Подготовить ответ на письмо</span></button></div>
+          <form class="ai-input" id="aiForm"><input id="aiQuestion" placeholder="Спроси о задаче или документе…" aria-label="Вопрос ИИ"><button aria-label="Отправить вопрос">↑</button></form>
+          <div class="ai-disclaimer"><span>♧</span> Ответы будут учитывать твои права доступа к данным.</div>
+        </article>
+      </section>
+      <footer class="page-footer"><span>Workspace Dashboard <span class="footer-version">· UI preview 0.1</span></span><span><span class="footer-dot"></span> Демонстрационные данные <span class="footer-separator">·</span> Nextcloud ещё не подключён</span></footer>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal-backdrop" id="createModal" hidden><div class="create-menu" role="dialog" aria-modal="true" aria-labelledby="createTitle"><div class="modal-heading"><strong id="createTitle">Создать</strong><button id="closeCreate" aria-label="Закрыть">×</button></div><button data-create="Задачу">☷ <span><strong>Задачу</strong><small>Добавить задачу в список</small></span></button><button data-create="Событие">▦ <span><strong>Событие</strong><small>Запланировать встречу</small></span></button><button data-create="Документ">▱ <span><strong>Документ</strong><small>Новый рабочий документ</small></span></button><p>Действия будут доступны после подключения рабочих сервисов.</p></div></div>
+<script src="app.js"></script>
+</body>
+</html>
