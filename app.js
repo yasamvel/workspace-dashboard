@@ -1,0 +1,19 @@
+const toastEl = document.getElementById('toast');
+let toastTimer;
+function showToast(message){toastEl.textContent=message;toastEl.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toastEl.classList.remove('show'),3200)}
+document.querySelectorAll('[data-toast]').forEach(el=>el.addEventListener('click',()=>showToast(el.dataset.toast)));
+const viewNames={overview:'Обзор',mail:'Почта',tasks:'Задачи',calendar:'Календарь',files:'Файлы',contacts:'Контакты',approvals:'На согласовании',team:'Команда',settings:'Настройки'};
+document.querySelectorAll('[data-view]').forEach(el=>el.addEventListener('click',()=>{const view=el.dataset.view;if(!view)return;document.querySelectorAll('.nav-item[data-view]').forEach(n=>n.classList.toggle('active',n.dataset.view===view));document.getElementById('crumbCurrent').textContent=viewNames[view]||'Обзор';if(view!=='overview')showToast('Раздел «'+(viewNames[view]||view)+'» будет развёрнут в следующей версии. Сейчас это интерактивный макет.');document.getElementById('sidebar').classList.remove('mobile-open')}));
+document.querySelectorAll('.task-check').forEach(btn=>btn.addEventListener('click',()=>{const row=btn.closest('.task-row');row.classList.toggle('completed');showToast(row.classList.contains('completed')?'Задача отмечена выполненной (только в макете)':'Задача возвращена в работу (только в макете)')}));
+document.querySelectorAll('.filter-chip').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter-chip').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');document.querySelectorAll('.task-row').forEach(row=>{const f=btn.dataset.filter;row.hidden=f==='urgent'?row.dataset.priority!=='urgent':f==='today'?row.dataset.due!=='today':false})}));
+const modal=document.getElementById('createModal');
+document.getElementById('quickCreate').addEventListener('click',()=>{modal.hidden=false});
+document.getElementById('closeCreate').addEventListener('click',()=>{modal.hidden=true});
+modal.addEventListener('click',e=>{if(e.target===modal)modal.hidden=true});
+modal.querySelectorAll('[data-create]').forEach(btn=>btn.addEventListener('click',()=>{modal.hidden=true;showToast('Создание «'+btn.dataset.create+'» подключим к рабочим сервисам на следующем этапе.')}));
+document.getElementById('mobileMenu').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('mobile-open'));
+document.getElementById('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.value.trim())showToast('Глобальный поиск заработает после подключения Nextcloud и почты. Запрос: '+e.target.value.trim())});
+document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();document.getElementById('globalSearch').focus()}if(e.key==='Escape'){modal.hidden=true;document.getElementById('sidebar').classList.remove('mobile-open')}});
+document.querySelectorAll('[data-prompt]').forEach(btn=>btn.addEventListener('click',()=>{document.getElementById('aiQuestion').value=btn.dataset.prompt;document.getElementById('aiQuestion').focus()}));
+document.getElementById('aiForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('aiQuestion');if(!input.value.trim())return;showToast('ИИ-помощник подключим к разрешённым файлам и письмам на следующем этапе.');input.value=''});
+document.getElementById('globalSearch').addEventListener('input',e=>{if(e.target.value.trim().length>1){const q=e.target.value.toLowerCase();document.querySelectorAll('.task-row').forEach(row=>row.hidden=!row.innerText.toLowerCase().includes(q))}else{document.querySelectorAll('.task-row').forEach(row=>row.hidden=false);const active=document.querySelector('.filter-chip.selected');if(active&&active.dataset.filter!=='all')active.click()}});
